@@ -34,10 +34,10 @@ func (l *Leg) DialString() string {
 
 	vars := ""
 	for k, v := range l.Vars {
-		vars += fmt.Sprintf("%s=%v", k, v)
+		vars += fmt.Sprintf(",%s=%v", k, v)
 	}
 	if vars != "" {
-		vars = fmt.Sprintf("{%v}", vars)
+		vars = fmt.Sprintf("{%v}", vars[1:])
 	}
 
 	return fmt.Sprintf("%v%v", vars, l.Endpoint)
