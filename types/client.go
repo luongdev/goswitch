@@ -8,7 +8,8 @@ type Client interface {
 	Disconnect()
 	Exec(ctx context.Context, cmd Command) (CommandOutput, error)
 	Events(ctx context.Context, events ...string) error
-	AddEventHandler(key string, handler EventHandler)
+	AddEventHandler(key string, handler EventHandler) string
+	RemoveEventHandler(key, id string)
 	GetSessionId() string
 }
 

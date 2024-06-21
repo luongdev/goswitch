@@ -15,20 +15,24 @@ type ClientImpl struct {
 	eventHandlers map[string]types.EventHandler
 }
 
-func (c *ClientImpl) AddEventHandler(key string, handler types.EventHandler) {
-	c.eventHandlers[key] = handler
+func (c *ClientImpl) RemoveEventHandler(key, handlerId string) {
+	delete(c.eventHandlers, key)
+	c.conn.RemoveEventListener(key, handlerId)
 }
 
-func (c *ClientImpl) RegisterEvents(ctx context.Context, event string) string {
-	return c.conn.RegisterEventListener(event, func(raw *eslgo.Event) {
+func (c *ClientImpl) AddEventHandler(key string, handler types.EventHandler) string {
+	c.eventHandlers[key] = handler
+
+	return c.conn.RegisterEventListener(key, func(e *eslgo.Event) {
+		event := NewEvent(e)
 		h, ok := c.eventHandlers["ALL"]
 		if ok && h != nil {
-			h.Handle(ctx, NewEvent(raw))
+			h.Handle(c.ctx, event)
 		}
 
-		h, ok = c.eventHandlers[event]
+		h, ok = c.eventHandlers[key]
 		if ok && h != nil {
-			h.Handle(ctx, NewEvent(raw))
+			h.Handle(c.ctx, event)
 		}
 	})
 }
@@ -74,14 +78,6 @@ func (c *ClientImpl) Events(ctx context.Context, events ...string) error {
 	res := NewCommandOutput(out)
 	if !res.IsOk() {
 		return fmt.Errorf("failed to listen to events: %s", res.GetBody())
-	}
-
-	c.RegisterEvents(ctx, "ALL")
-	for _, event := range events {
-		c.RegisterEvents(ctx, event)
-		if "ALL" == event {
-			continue
-		}
 	}
 
 	return nil
