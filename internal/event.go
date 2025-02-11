@@ -2,8 +2,8 @@ package internal
 
 import (
 	"fmt"
+	"github.com/luongdev/fsgo"
 	"github.com/luongdev/goswitch/types"
-	"github.com/percipia/eslgo"
 )
 
 type eventImpl struct {

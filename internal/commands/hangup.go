@@ -2,8 +2,8 @@ package commands
 
 import (
 	"github.com/luongdev/goswitch/types"
-	"github.com/percipia/eslgo/command"
-	"github.com/percipia/eslgo/command/call"
+	"github.com/luongdev/fsgo/command"
+	"github.com/luongdev/fsgo/command/call"
 )
 
 type HangupCommand struct {

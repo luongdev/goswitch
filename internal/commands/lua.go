@@ -2,9 +2,9 @@ package commands
 
 import (
 	"fmt"
+	"github.com/luongdev/fsgo/command/call"
 	"github.com/luongdev/goswitch/types"
 	"github.com/luongdev/goswitch/utils"
-	"github.com/percipia/eslgo/command/call"
 )
 
 type LuaCommand struct {

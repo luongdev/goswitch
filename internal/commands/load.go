@@ -3,7 +3,7 @@ package commands
 import (
 	"fmt"
 	"github.com/luongdev/goswitch/types"
-	"github.com/percipia/eslgo/command"
+	"github.com/luongdev/fsgo/command"
 	"strings"
 )
 

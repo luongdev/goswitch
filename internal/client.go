@@ -3,9 +3,9 @@ package internal
 import (
 	"context"
 	"fmt"
+	"github.com/luongdev/fsgo"
+	"github.com/luongdev/fsgo/command"
 	"github.com/luongdev/goswitch/types"
-	"github.com/percipia/eslgo"
-	"github.com/percipia/eslgo/command"
 )
 
 type ClientImpl struct {

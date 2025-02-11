@@ -2,8 +2,8 @@ package commands
 
 import (
 	"fmt"
+	"github.com/luongdev/fsgo/command"
 	"github.com/luongdev/goswitch/types"
-	"github.com/percipia/eslgo/command"
 )
 
 type ShowCommand struct {

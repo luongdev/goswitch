@@ -3,8 +3,8 @@ package internal
 import (
 	"context"
 	"fmt"
+	"github.com/luongdev/fsgo"
 	"github.com/luongdev/goswitch/types"
-	"github.com/percipia/eslgo"
 	"log"
 )
 

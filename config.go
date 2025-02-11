@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"github.com/luongdev/goswitch/internal"
 	"github.com/luongdev/goswitch/types"
-	"github.com/percipia/eslgo"
+	"github.com/luongdev/fsgo"
 	"time"
 )
 

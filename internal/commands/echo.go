@@ -1,8 +1,8 @@
 package commands
 
 import (
+	"github.com/luongdev/fsgo/command/call"
 	"github.com/luongdev/goswitch/types"
-	"github.com/percipia/eslgo/command/call"
 )
 
 type EchoCommand struct {
